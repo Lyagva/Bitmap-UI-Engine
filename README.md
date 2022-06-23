@@ -1,6 +1,6 @@
 # Bitmap-UI-Engine
 ---
-## INFO
+## Infp
 **Bitmap-UI-Engine** is a small UI engine made by **Lyagva**. It was written on **python** using **pygame** library.
 
 ---
@@ -13,9 +13,9 @@
 
 ---
 ## Comming features
-- Easy **keyboard interface** that will allow user not to use pygame key constants
-- **Sound** implementation
-- Advanced XML layout tags, like **<grid>**
+- [ ] Easy **keyboard interface** that will allow user not to use pygame key constants
+- [ ] **Sound** implementation
+- [ ] Advanced XML layout tags, like **<grid>**
 
 ---
 ## How to start
