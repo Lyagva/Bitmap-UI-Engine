@@ -49,7 +49,7 @@ def getFilenameByChar(char):
 	return filename + ".bm"
 
 
-def getBitmap(fontName="FONT_4X5", char="a"):
+def getCharBitmapList(fontName="FONT_4X5", char="a"):
 	"""
 	Ouputs Bitmap object for given font and char
 	:param fontName: Name of font you use
@@ -57,13 +57,11 @@ def getBitmap(fontName="FONT_4X5", char="a"):
 	:return: Bitmap class, contains letter .bm image
 	"""
 
-	bitmapItem = Bitmap.Bitmap()
+	bitmap = [""]
 
 	bitmap = Bitmap.Bitmap.loadBitmap("FONTS/" + fontName + "/" + getFilenameByChar(char))
-	if bitmap != -1:
-		bitmapItem.addNewFrame("default", bitmap)
 
-	return bitmapItem
+	return bitmap
 
 def getFontInfo(fontName="FONT_4X5"):
 	"""

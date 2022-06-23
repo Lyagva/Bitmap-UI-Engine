@@ -17,7 +17,7 @@ class Label(UITEMS.Box.Box):
 
 		self.font = font
 		self.text = text
-		self.bitmapText = []
+		self.bitmap = Bitmap.Bitmap()
 		self.generateNewBitmapText()
 
 	def generateNewBitmapText(self):
@@ -29,23 +29,26 @@ class Label(UITEMS.Box.Box):
 		if fontInfo == -1:
 			return -1
 
-		self.bitmapText = [getBitmap(self.font, char) for char in self.text]
+		bitmapText = [getCharBitmapList(self.font, char) for char in self.text]
+		bitmapList = bitmapText[0]
 
-		for index, bitmapItem in enumerate(self.bitmapText):
-			bitmapItem.pos = self.pos + Vector2(index * fontInfo["size"].x, 0)
+		for item in bitmapText[1:]:
+			for index, row in enumerate(item):
+				bitmapList[index] += row
+
+		self.bitmap = Bitmap.Bitmap()
+		self.bitmap.addNewFrame("default", bitmapList)
 
 	def update(self):
 		"""
 		Updates every Bitmap object
 		:return:
 		"""
-		for index, bitmapItem in enumerate(self.bitmapText):
-			bitmapItem.update(self)
+		self.bitmap.update(self)
 
 	def render(self):
 		"""
 		Renders every Bitmap object
 		:return:
 		"""
-		for index, bitmapItem in enumerate(self.bitmapText):
-			bitmapItem.render(self)
+		self.bitmap.render(self)
