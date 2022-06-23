@@ -14,15 +14,14 @@ class Bitmap:
 	def loadBitmap(filename="../Bitmaps/save.bm"):
 		"""
 		Static method
-		Reads file and returns bitmap list
-		:param filename: Name of .bm file
-		:return: .bm like list. If file not found, returns [""]
+		Reads fileName and returns bitmap list
+		:param filename: Name of .bm fileName
+		:return: .bm like list. If fileName not found, returns [""]
 		"""
 
 		try:
 			with open(filename, mode="r+") as file:
-				bitmap = eval(file.readline().replace("\n", ""))
-
+				bitmap = [line.replace("\n", "") for line in file.readlines()]
 			return bitmap
 		except FileNotFoundError:
 			print("File Not Found")

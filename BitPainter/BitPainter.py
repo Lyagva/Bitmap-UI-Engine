@@ -6,7 +6,7 @@ import Config
 class BitmapPainter:
 	"""
 	Usage:
-		In config file edit:
+		In config fileName edit:
 			BITMAP_PAINTER_ART_SIZE to resolution of your bitmap art
 			BITMAP_PAINTER_PIXEL_SIZE to resize every bitmap art pixel to you screen pixel
 
@@ -58,10 +58,10 @@ class BitmapPainter:
 
 			# Save
 			if pg.key.get_pressed()[pg.K_s]:
+				saveBitmap = self.bitmap.copy()
 				with open("save.bm", mode="w+") as file:
-					saveBitmap = self.bitmap.copy()
-					saveBitmap = [f"\'{x}\'" for x in saveBitmap]
-					file.write(f"[{', '.join(saveBitmap)}]")
+					for row in saveBitmap:
+						print(row, file=file)
 
 
 			# ======== RENDER ========
