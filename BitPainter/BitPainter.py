@@ -3,7 +3,19 @@ from pygame import Vector2, Vector3
 import Config
 
 
-class App:
+class BitmapPainter:
+	"""
+	Usage:
+		In config file edit:
+			BITMAP_PAINTER_ART_SIZE to resolution of your bitmap art
+			BITMAP_PAINTER_PIXEL_SIZE to resize every bitmap art pixel to you screen pixel
+
+		Paint with leftMouseButton
+		Erase with rightMouseButton
+
+		Save using "s" key. Bitmap art will be saved as "save.bm" at "BitPainter.py" directory
+	"""
+
 	def __init__(self):
 		self.running = True
 		self.events = []
@@ -106,5 +118,5 @@ class App:
 
 
 if __name__ == "__main__":
-	app = App()
+	app = BitmapPainter()
 	app.run()

@@ -3,6 +3,11 @@ from pygame import Vector2, Vector3
 import Config
 
 class Box:
+	"""
+	Basic box ui element that will do nothing except of be drawn on screen
+	Make rectangle by setting size. It'll be filled by completely white color
+	"""
+
 	def __init__(self, app, pos=Vector2(0, 0), size=Vector2(16, 16)):
 		self.app = app
 		self.pos = pos

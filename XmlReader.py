@@ -6,6 +6,13 @@ from UITEMS import Box, Bitmap, Button, Label
 
 
 def getElementsFromFile(app, filename="layout.xml"):
+	"""
+	Reads given .xml file and returns dictionary with all ui elements
+	:param app: main app object
+	:param filename: name of .xml file with layout (default "layout.xml")
+	:return: dictionary with format {id: uiObject}
+	"""
+
 	elements = {}
 
 	xmlData = ET.parse(filename)

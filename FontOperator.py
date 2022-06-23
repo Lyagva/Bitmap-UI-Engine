@@ -3,6 +3,12 @@ from pygame import Vector2
 
 
 def getFilenameByChar(char):
+	"""
+	Outputs filename by give char
+	:param char: single letter
+	:return: filename that contains char bitmap
+	"""
+
 	filename = "_ERROR"
 
 	# NORMAL CHARACTERS
@@ -42,7 +48,15 @@ def getFilenameByChar(char):
 
 	return filename + ".bm"
 
+
 def getBitmap(fontName="FONT_4X5", char="a"):
+	"""
+	Ouputs Bitmap object for given font and char
+	:param fontName: Name of font you use
+	:param char: single letter that will be outputted as bitmap
+	:return: Bitmap class, contains letter .bm image
+	"""
+
 	bitmapItem = Bitmap.Bitmap()
 
 	bitmap = Bitmap.Bitmap.loadBitmap("FONTS/" + fontName + "/" + getFilenameByChar(char))
@@ -52,6 +66,12 @@ def getBitmap(fontName="FONT_4X5", char="a"):
 	return bitmapItem
 
 def getFontInfo(fontName="FONT_4X5"):
+	"""
+	Returns info about given font. If font not found returns -1
+	:param fontName: font name
+	:return: dictionary: {"size": Vector2(width, height)}
+	"""
+
 	fontsInfo = {}
 	with open("FONTS/info", mode="r") as file:
 		for line in file.readlines()[1:]:
