@@ -1,0 +1,10 @@
+from pygame import Vector2, Vector3
+
+
+MAX_FPS = 1200
+
+SCREEN_SIZE = Vector2(128, 64)
+PIXEL_SIZE = 8
+
+BITMAP_PAINTER_ART_SIZE = Vector2(16, 16)
+BITMAP_PAINTER_PIXEL_SIZE = 48
