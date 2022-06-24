@@ -33,33 +33,16 @@ class App:
 		"""
 
 		while self.running:
-			self.events = pg.event.get()
-			for e in self.events:
-				if e.type == pg.QUIT:
-					self.quit()
-
-				if e.type == pg.KEYDOWN and ("cursor" in self.uiElements.keys()):
-					if e.key == pg.K_RIGHT and self.uiElements["cursor"].pos.x < 112:
-						self.uiElements["cursor"].pos.x += 16
-					if e.key == pg.K_LEFT and self.uiElements["cursor"].pos.x > 0:
-						self.uiElements["cursor"].pos.x -= 16
-					if e.key == pg.K_DOWN  and self.uiElements["cursor"].pos.y < 48:
-						self.uiElements["cursor"].pos.y += 16
-					if e.key == pg.K_UP  and self.uiElements["cursor"].pos.y > 0:
-						self.uiElements["cursor"].pos.y -= 16
-
-					if e.key in [pg.K_SPACE, pg.K_z, pg.K_KP_ENTER]:
-						cursorGridPos = self.uiElements["cursor"].pos // 16
-						for id, item in self.uiElements.items():
-							if type(item) == UITEMS.Button.Button and item.pos // 16 == cursorGridPos:
-								item.onClick()
-
+			# ======== EVENTS ========
+			if pg.event.peek(pg.QUIT):
+				self.quit()
 
 			# ======== UPDATE ========
 			for id, element in self.uiElements.items():
 				element.update()
 
 			self.onUpdate()
+			self.events.clear()
 
 			# ======== RENDER ========
 			self.screen.fill((0, 0, 0))

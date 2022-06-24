@@ -2,9 +2,13 @@
 
 <app>
     <!-- <box id="bx" size="15 15"/> -->
+
     <button id="btn_left" pos="16 0" bitmap="Bitmaps/KeyLeft.bm"/>
     <image id="cursor" pos="16 0" bitmap="Bitmaps/Cursor/Cursor_0.bm"/>
+
+    <!--
     <label id="label_letters" pos="0 16" text="abcdefghijklmnopqrstuvwxyz"/>
     <label id="label_nums" pos="0 22" text="1234567890"/>
     <label id="label_special" pos="0 28" text="!#$%^&amp;*()-_+,./\'&#8221;"/>
+    -->
 </app>
