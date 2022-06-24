@@ -1,10 +1,8 @@
 import pygame as pg
-from pygame import Vector2, Vector3
-import Config
+from pygame import Vector2
+from Engine import Config
 
-import UITEMS.Bitmap
-import UITEMS.Box
-
+from Engine.UiElements import Bitmap, Box
 
 def clamp(x, l, r):
 	"""
@@ -17,15 +15,15 @@ def clamp(x, l, r):
 	return int(max(min(x, r), l))
 
 
-class Button(UITEMS.Box.Box):
+class Button(Box.Box):
 	"""
 	Basic Button ui element, that can be pressed with mouse
 	"""
 
 	def __init__(self, app, pos=Vector2(0, 0), bitmapFile="Bitmaps/KeyLeft.bm"):
 		super().__init__(app, pos=pos)
-		self.bitmap = UITEMS.Bitmap.Bitmap()
-		self.bitmap.addNewFrame("default", UITEMS.Bitmap.Bitmap.loadBitmap(bitmapFile))
+		self.bitmap = Bitmap.Bitmap()
+		self.bitmap.addNewFrame("default", Bitmap.Bitmap.loadBitmap(bitmapFile))
 		self.size = Vector2(max([len(row) for row in self.bitmap.getCurrentFrame()]),
 							max([len(self.bitmap.getCurrentFrame())]))
 

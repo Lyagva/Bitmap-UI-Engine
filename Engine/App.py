@@ -1,8 +1,6 @@
-import UITEMS.Button
-from XmlReader import *
-import Config
+from Engine.UiUtilities import *
+from Engine import Config
 import pygame as pg
-from UITEMS.Bitmap import Bitmap
 
 class App:
 	def __init__(self):

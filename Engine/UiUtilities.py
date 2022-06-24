@@ -1,8 +1,8 @@
 import xml.etree.ElementTree as ET
 
-from pygame import Vector2, Vector3
+from pygame import Vector2
 
-from UITEMS import Box, Bitmap, Button, Label
+from Engine.UiElements import Box, Bitmap, Button, Label
 
 
 def getElementsFromFile(app, filename="layout.xml"):

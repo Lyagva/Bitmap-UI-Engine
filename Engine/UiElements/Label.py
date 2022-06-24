@@ -1,13 +1,8 @@
-import pygame as pg
-from pygame import Vector2, Vector3
-import Config
-
-import UITEMS.Bitmap
-import UITEMS.Box
-from FontOperator import *
+from Engine.UiElements import Box
+from Engine.FontOperator import *
 
 
-class Label(UITEMS.Box.Box):
+class Label(Box.Box):
 	"""
 	Basic text Label. Contains many Bitmap objects to every letter in given text
 	"""

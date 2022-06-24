@@ -1,8 +1,8 @@
 import pygame as pg
-from pygame import Vector2, Vector3
-import Config
+from pygame import Vector2
+from Engine import Config
 
-import UITEMS.Box
+from Engine.UiElements import Box
 
 
 class Bitmap:
@@ -203,7 +203,7 @@ class Bitmap:
 		return self.animations[self.currentAnimation]["frameTime"]
 
 
-class Image(UITEMS.Box.Box):
+class Image(Box.Box):
 	"""
 	Basic Image ui element
 	Contains Bitmap object

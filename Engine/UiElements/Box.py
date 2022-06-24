@@ -1,6 +1,6 @@
 import pygame as pg
-from pygame import Vector2, Vector3
-import Config
+from pygame import Vector2
+from Engine import Config
 
 class Box:
 	"""
