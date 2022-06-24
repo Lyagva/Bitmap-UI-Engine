@@ -1,6 +1,8 @@
 from App import App
 from UITEMS.Bitmap import Bitmap
 from Key import Key
+from Mouse import Mouse
+
 import UITEMS
 
 class CustomApp(App):
