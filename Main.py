@@ -6,11 +6,15 @@ from Engine import UiElements
 
 class CustomApp(App):
 	def onStart(self):
-		self.uiElements["cursor"].bitmap.addNewFrame("default", Bitmap.loadBitmap("Bitmaps/Cursor/Cursor_1.bm"))
-		self.uiElements["cursor"].bitmap.nextFrame()
-		self.uiElements["cursor"].bitmap.setAnimationFrameTime("default", 0.25)
+		print(self.uiElements)
 
-		self.uiElements["btn_left"].onClick = lambda: print("You used button with left arrow!")
+		if "cursor" in self.uiElements.keys():
+			self.uiElements["cursor"].bitmap.addNewFrame("default", Bitmap.loadBitmap("Bitmaps/Cursor/Cursor_1.bm"))
+			self.uiElements["cursor"].bitmap.nextFrame()
+			self.uiElements["cursor"].bitmap.setAnimationFrameTime("default", 0.25)
+
+		if "btn_left" in self.uiElements.keys():
+			self.uiElements["btn_left"].onClick = lambda: print("You used button with left arrow!")
 
 	def onUpdate(self):
 		if "cursor" in self.uiElements.keys():

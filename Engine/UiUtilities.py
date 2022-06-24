@@ -22,37 +22,57 @@ def getElementsFromFile(app, filename="layout.xml"):
 		tag = item.tag
 		attrib = item.attrib
 
-		element = None
+		if tag not in ["box", "image", "button", "label"]:
+			continue
+
+		id = attrib["id"]
 
 		pos = Vector2(0, 0)
 		if "pos" in attrib.keys():
 			pos = Vector2(list(map(int, attrib["pos"].split(" "))))
 
-		size = Vector2(0, 0)
-		if "size" in attrib.keys():
-			size = Vector2(list(map(int, attrib["size"].split(" "))))
+
+		if tag == "box":
+			size = Vector2(0, 0)
+			if "size" in attrib.keys():
+				size = Vector2(list(map(int, attrib["size"].split(" "))))
+
+			elements[id] = createBox(app, pos=pos, size=size)
+
+		if tag == "label":
+			text = "abcdef"
+			if "text" in attrib.keys():
+				text = attrib["text"]
+
+			font = None
+			if "font" in attrib.keys():
+				font = attrib["font"]
+
+			elements[id] = createLabel(app, pos=pos, font=font, text=text)
+
 
 		bitmapFile = None
 		if "bitmap" in attrib.keys():
 			bitmapFile = attrib["bitmap"]
 
-		text = "abcdef"
-		if "text" in attrib.keys():
-			text = attrib["text"]
-
-		if tag == "box":
-			element = Box.Box(app, pos=pos, size=size)
-
 		if tag == "image":
-			element = Bitmap.Image(app, pos=pos, bitmapFile=bitmapFile)
+			elements[id] = createImage(app, pos=pos, defaultBitmapFile=bitmapFile)
 
 		if tag == "button":
-			element = Button.Button(app, pos=pos, bitmapFile=bitmapFile)
+			elements[id] = createButton(app, pos=pos, defaultBitmapFile=bitmapFile)
 
-		if tag == "label":
-			element = Label.Label(app, pos=pos, text=text)
-
-		if element:
-			elements[attrib["id"]] = element
 
 	return elements
+
+
+def createBox(app, pos=Vector2(0, 0), size=Vector2(16, 16)):
+	return Box.Box(app, pos=pos, size=size)
+
+def createImage(app, pos=Vector2(0, 0), defaultBitmapFile=None):
+	return Bitmap.Image(app, pos=pos, bitmapFile=defaultBitmapFile)
+
+def createButton(app, pos=Vector2(0, 0), defaultBitmapFile=None):
+	return Button.Button(app, pos=pos, bitmapFile=defaultBitmapFile)
+
+def createLabel(app, pos=Vector2(0, 0), font=None, text="abcdef"):
+	return Label.Label(app, pos=pos, font=font, text=text)

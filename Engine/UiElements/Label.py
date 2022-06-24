@@ -7,8 +7,11 @@ class Label(Box.Box):
 	Basic text Label. Contains many Bitmap objects to every letter in given text
 	"""
 
-	def __init__(self, app, pos=Vector2(0, 0), font="FONT_4X5", text="abcdefg"):
+	def __init__(self, app, pos=Vector2(0, 0), font=None, text="abcdefg"):
 		super().__init__(app, pos=pos)
+
+		if font is None:
+			font = "FONT_4X5"
 
 		self.font = font
 		self.text = text
