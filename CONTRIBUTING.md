@@ -14,7 +14,7 @@ Sometimes you want to solve issues or add new features, but what **exactly** sho
 
 1. **Clone repository** using `git clone` or using your IDE's built-in tools
 2. **Make new branch** using `git checkout -b <name of brunch>` or using your IDE's built-in tools
-3. **Edit** all files you needed
+3. **Edit** all files you needed **AND ADD DOCUMENTATION TO YOUR CODE**
 4. **Commit** them using `git commit ...` ([git commit guide](https://www.git-tower.com/learn/git/commands/git-commit)) or using your IDE's built-in tools
 5. **Push** you branch to server using `git push`
 6. Open github and make **pull request** using popup notification. In pull request make should you provided all information about what've you done.
