@@ -1,20 +1,25 @@
+import Engine
+
 from Engine.App import App
-from Engine.UiElements.Bitmap import Bitmap
 from Engine.Key import Key
+from Engine.Mouse import Mouse
+from Engine.Sound import Sound
 
 from Engine import UiElements
 
 class CustomApp(App):
 	def onStart(self):
-		print(self.uiElements)
+		self.sound = Sound("Sounds/Laser.wav")
+		self.sound.play()
 
 		if "cursor" in self.uiElements.keys():
-			self.uiElements["cursor"].bitmap.addNewFrame("default", Bitmap.loadBitmap("Bitmaps/Cursor/Cursor_1.bm"))
+			self.uiElements["cursor"].bitmap.addNewFrame("default", Engine.UiUtilities.loadBitmap("Bitmaps/Cursor/Cursor_1.bm"))
 			self.uiElements["cursor"].bitmap.nextFrame()
 			self.uiElements["cursor"].bitmap.setAnimationFrameTime("default", 0.25)
 
 		if "btn_left" in self.uiElements.keys():
-			self.uiElements["btn_left"].onClick = lambda: print("You used button with left arrow!")
+			# Play sound on element play
+			self.uiElements["btn_left"].onClick = lambda: self.sound.play()
 
 	def onUpdate(self):
 		if "cursor" in self.uiElements.keys():

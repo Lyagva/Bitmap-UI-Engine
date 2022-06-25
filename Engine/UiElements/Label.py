@@ -1,4 +1,4 @@
-from Engine.UiElements import Box
+from Engine.UiElements import Box, Bitmap
 from Engine.FontOperator import *
 
 

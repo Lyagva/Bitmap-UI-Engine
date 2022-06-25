@@ -1,5 +1,7 @@
 import pygame as pg
 from pygame import Vector2
+
+import Engine.UiUtilities
 from Engine import Config
 
 from Engine.UiElements import Bitmap, Box
@@ -23,7 +25,7 @@ class Button(Box.Box):
 	def __init__(self, app, pos=Vector2(0, 0), bitmapFile="Bitmaps/KeyLeft.bm"):
 		super().__init__(app, pos=pos)
 		self.bitmap = Bitmap.Bitmap()
-		self.bitmap.addNewFrame("default", Bitmap.Bitmap.loadBitmap(bitmapFile))
+		self.bitmap.addNewFrame("default", Engine.UiUtilities.loadBitmap(bitmapFile))
 		self.size = Vector2(max([len(row) for row in self.bitmap.getCurrentFrame()]),
 							max([len(self.bitmap.getCurrentFrame())]))
 

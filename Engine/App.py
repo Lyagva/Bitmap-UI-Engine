@@ -1,4 +1,5 @@
-from Engine.UiUtilities import *
+import Engine
+import Engine.UiUtilities
 from Engine import Config
 import pygame as pg
 
@@ -9,10 +10,14 @@ class App:
 
 		Initializes running, events, screen, clock, statistics and uiElements variables
 		"""
+		pg.init()
+		pg.mixer.init()
+
 		self.running = True
 		self.events = []
 		self.screen = pg.display.set_mode(Config.SCREEN_SIZE * Config.PIXEL_SIZE)
 		self.clock = pg.time.Clock()
+
 
 		self.statistics = {"fps": 0.,
 						   "maxFps": 0.,
@@ -20,7 +25,7 @@ class App:
 						   "fpsSum": 0.,
 						   "time": 0.}
 
-		self.uiElements = getElementsFromFile(self)
+		self.uiElements = Engine.UiUtilities.getElementsFromFile(self)
 
 		self.onStart()
 
@@ -72,18 +77,18 @@ class App:
 		self.statistics["fpsSum"] += fps
 
 		pg.display.set_caption(f"UI Engine by Lyagva - "
-							   f"FPS: {fps} - "
-							   f"Max FPS: {self.statistics['maxFps']} - "
+							   f"FPS: {str(fps).rjust(6, '0')} - "
+							   f"Max FPS: {str(self.statistics['maxFps']).rjust(6, '0')} - "
 							   f"Avg FPS: "
-							   f"{self.statistics['fpsSum'] / self.statistics['framesCount'] * 100 // 1 / 100} - "
-							   f"Time: {self.statistics['time'] * 100 // 1 / 100}")
+							   f"{str(self.statistics['fpsSum'] / self.statistics['framesCount'] * 100 // 1 / 100).rjust(6, '0')} - "
+							   f"Time: {str(self.statistics['time'] * 100 // 1 / 100).rjust(6, '0')}")
 		self.clock.tick(Config.MAX_FPS)
 
 	def quit(self):
 		"""
 		Quits the app
 		"""
-
+		pg.mixer.quit()
 		pg.quit()
 		quit()
 

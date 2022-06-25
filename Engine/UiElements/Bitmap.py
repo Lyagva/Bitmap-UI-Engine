@@ -1,6 +1,7 @@
 import pygame as pg
 from pygame import Vector2
 from Engine import Config
+import Engine
 
 from Engine.UiElements import Box
 
@@ -9,25 +10,6 @@ class Bitmap:
 	"""
 	Basic bitmap elements. Can be drawn, can have multiple animations, with different amount of frames
 	"""
-
-	@staticmethod
-	def loadBitmap(filename="../Bitmaps/save.bm"):
-		"""
-		Static method
-		Reads fileName and returns bitmap list
-		:param filename: Name of .bm fileName
-		:return: .bm like list. If fileName not found, returns [""]
-		"""
-
-		try:
-			with open(filename, mode="r+") as file:
-				bitmap = [line.replace("\n", "") for line in file.readlines()]
-			return bitmap
-		except FileNotFoundError:
-			print("File Not Found")
-			return [""]
-
-
 	def __init__(self, pos=None):
 		"""
 		Init basic Bitmap class
@@ -214,7 +196,7 @@ class Image(Box.Box):
 
 		self.bitmap = Bitmap()
 		if bitmapFile is not None:
-			self.bitmap.addNewFrame("default", Bitmap.loadBitmap(bitmapFile))
+			self.bitmap.addNewFrame("default", Engine.UiUtilities.loadBitmap(bitmapFile))
 
 	def update(self):
 		"""

@@ -4,7 +4,6 @@ from pygame import Vector2
 
 from Engine.UiElements import Box, Bitmap, Button, Label
 
-
 def getElementsFromFile(app, filename="layout.xml"):
 	"""
 	Reads given .xml fileName and returns dictionary with all ui elements
@@ -63,6 +62,22 @@ def getElementsFromFile(app, filename="layout.xml"):
 
 
 	return elements
+
+def loadBitmap(filename="../Bitmaps/save.bm"):
+	"""
+	Static method
+	Reads fileName and returns bitmap list
+	:param filename: Name of .bm fileName
+	:return: .bm like list. If fileName not found, returns [""]
+	"""
+
+	try:
+		with open(filename, mode="r+") as file:
+			bitmap = [line.replace("\n", "") for line in file.readlines()]
+		return bitmap
+	except FileNotFoundError:
+		print("File Not Found")
+		return [""]
 
 
 def createBox(app, pos=Vector2(0, 0), size=Vector2(16, 16)):

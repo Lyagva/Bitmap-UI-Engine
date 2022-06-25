@@ -1,4 +1,4 @@
-from Engine.UiElements import Bitmap
+import Engine
 from pygame import Vector2
 
 
@@ -59,7 +59,7 @@ def getCharBitmapList(fontName="FONT_4X5", char="a"):
 
 	bitmap = [""]
 
-	bitmap = Bitmap.Bitmap.loadBitmap("Engine/FONTS/" + fontName + "/" + getFilenameByChar(char))
+	bitmap = Engine.UiUtilities.loadBitmap("Engine/FONTS/" + fontName + "/" + getFilenameByChar(char))
 
 	return bitmap
 
