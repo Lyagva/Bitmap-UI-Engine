@@ -13,7 +13,7 @@
 
 ---
 ## Comming features
-- [ ] Easy **keyboard interface** that will allow user not to use pygame key constants
+- [x] Easy **keyboard interface** that will allow user not to use pygame key constants
 - [ ] **Sound** implementation
 - [ ] Advanced XML layout tags, like **<grid>**
 
